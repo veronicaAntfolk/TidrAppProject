@@ -1,0 +1,123 @@
+﻿@model TidrAppProject.Models.EmployeeRegistration
+@{
+    ViewBag.Title = "Register a new employee";
+}
+
+<h2>@ViewBag.Title.</h2>
+<div stylw="display:flex;justify-content:center" ;>
+    @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal center", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <table class="table style=">
+            <tr>
+                <th>Login credentials</th>
+                <th>Contact info</th>
+            </tr>
+            <tr>
+                <td>
+                    <table style="border-collapse:separate;border-spacing:0 0.5em;">
+                        <tr>
+                            <td>@Html.LabelFor(m => m.RegisterViewModel.Email, new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.EditorFor(m => m.RegisterViewModel.Email, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(m => m.RegisterViewModel.Email, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.RegisterViewModel.UserName, new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.EditorFor(m => m.RegisterViewModel.UserName, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(m => m.RegisterViewModel.UserName, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.RegisterViewModel.Password, new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.EditorFor(m => m.RegisterViewModel.Password, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(m => m.RegisterViewModel.Password, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.RegisterViewModel.ConfirmPassword, new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.EditorFor(m => m.RegisterViewModel.ConfirmPassword, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(m => m.RegisterViewModel.ConfirmPassword, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.Label("User role", new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.DropDownList("Name", (IEnumerable<SelectListItem>)ViewBag.Roles, string.Empty ,htmlAttributes: new { @class = "form-control" })</td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table style="border-collapse:separate;border-spacing:0 0.5em;">
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Employee.FirstName, new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.EditorFor(m => m.Employee.FirstName, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(m => m.Employee.FirstName, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Employee.LastName, new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.EditorFor(m => m.Employee.LastName, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(m => m.Employee.LastName, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Employee.PersonalNumber, new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.EditorFor(m => m.Employee.PersonalNumber, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(m => m.Employee.PersonalNumber, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Employee.HiredDate, new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.EditorFor(m => m.Employee.HiredDate, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(m => m.Employee.HiredDate, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Employee.Address, new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.EditorFor(m => m.Employee.Address, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(m => m.Employee.Address, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Employee.Postcode, new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.EditorFor(m => m.Employee.Postcode, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(m => m.Employee.Postcode, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Employee.City, new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.EditorFor(m => m.Employee.City, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(m => m.Employee.City, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Employee.PhoneNumber, new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.EditorFor(m => m.Employee.PhoneNumber, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(m => m.Employee.PhoneNumber, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Employee.ProfilePic, new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.EditorFor(m => m.Employee.ProfilePic, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(m => m.Employee.ProfilePic, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Employee.Notes, new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.EditorFor(m => m.Employee.Notes, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(m => m.Employee.Notes, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Employee.HourlySalary, new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.EditorFor(m => m.Employee.HourlySalary, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(m => m.Employee.HourlySalary, "", new { @class = "text-danger" })</td>
+                        </tr>
+                        <tr>
+                            <td>@Html.LabelFor(m => m.Employee.MonthlySalary, new { @class = "col-md-2 control-label" })</td>
+                            <td>@Html.EditorFor(m => m.Employee.MonthlySalary, new { @class = "form-control" })</td>
+                            <td>@Html.ValidationMessageFor(m => m.Employee.MonthlySalary, "", new { @class = "text-danger" })</td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10" style="align-content:center">
+                <input type="submit" class="btn btn-default" value="Register" />
+            </div>
+        </div>
+
+
+    }
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
